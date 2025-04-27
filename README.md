@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>패턴 타이머 제작자 리공검사</title>
+    <title>패턴 타이머 제작자</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -97,8 +97,8 @@
             [160, "권능", "권능"],
             [190, "땅개", "땅개"],
             [240, "땅개", "땅개"],
-            [290, "땅개", "땅개"],
             [240, "권능", "권능"],
+            [290, "땅개", "땅개"],
             [320, "권능", "권능"]
         ].sort((a, b) => a[0] - b[0]);
 
@@ -216,6 +216,10 @@
                     }
                 }
             });
+        }
+    </script>
+</body>
+</html>
         }
     </script>
 </body>
