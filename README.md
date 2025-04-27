@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>패턴 타이머 제작자</title>
+    <title>패턴 타이머 제작자 1</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -138,39 +138,39 @@
         }
 
         function updateTimer() {
-            elapsedSeconds++;
-            const remainingSeconds = totalSeconds - elapsedSeconds;
-            
-            if (remainingSeconds < 0) {
-                clearInterval(timer);
-                timerDisplay.textContent = "00:00";
-                messageDisplay.textContent = "타이머 종료!";
-                nextPatternDisplay.textContent = "다음 패턴: -";
-                return;
-            }
+    elapsedSeconds++;
+    const remainingSeconds = totalSeconds - elapsedSeconds;
+    
+    if (remainingSeconds < 0) {
+        clearInterval(timer);
+        timerDisplay.textContent = "00:00";
+        messageDisplay.textContent = "타이머 종료!";
+        nextPatternDisplay.textContent = "다음 패턴: -";
+        return;
+    }
 
-            const mins = Math.floor(remainingSeconds / 60);
-            const secs = remainingSeconds % 60;
-            timerDisplay.textContent = `${mins}:${secs < 10 ? '0' + secs : secs}`;
+    const mins = Math.floor(remainingSeconds / 60);
+    const secs = remainingSeconds % 60;
+    timerDisplay.textContent = `${mins}:${secs < 10 ? '0' + secs : secs}`;
 
-            if (patternIndex < patterns.length && (elapsedSeconds + 10) === patterns[patternIndex][0]) {
-                const [_, msg, cls] = patterns[patternIndex];
-                messageDisplay.textContent = msg;
-                messageDisplay.className = cls;
-                
-                if (msg === "땅개") 땅개횟수++;
-                if (msg === "권능") 권능횟수++;
-                
-                setTimeout(() => {
-                    messageDisplay.textContent = '';
-                    messageDisplay.className = '';
-                }, 2000);
-                patternIndex++;
-                updateNextPattern();
-            } else {
-                updateNextPattern();
-            }
-        }
+  
+    while (patternIndex < patterns.length && (elapsedSeconds + 10) >= patterns[patternIndex][0]) {
+        const [_, msg, cls] = patterns[patternIndex];
+        messageDisplay.textContent = msg;
+        messageDisplay.className = cls;
+        
+        if (msg === "땅개") 땅개횟수++;
+        if (msg === "권능") 권능횟수++;
+        
+        setTimeout(() => {
+            messageDisplay.textContent = '';
+            messageDisplay.className = '';
+        }, 2000);
+        patternIndex++;
+    }
+    
+    updateNextPattern();
+}
 
         function updateNextPattern() {
             if (patternIndex < patterns.length) {
@@ -220,8 +220,3 @@
     </script>
 </body>
 </html>
-        }
-    </script>
-</body>
-</html>
-
